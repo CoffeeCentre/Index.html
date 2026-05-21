@@ -1,211 +1,196 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Section, SectionHeader } from "@/components/section";
-import {
-  BeansIcon,
-  CoffeeCupIcon,
-  DiamondIcon,
-  EspressoIcon,
-  GearIcon,
-  PaletteIcon,
-  SealIcon,
-  SparkleIcon,
-  StarIcon,
-  SteamIcon,
-} from "@/components/icons";
+import { ArrowRight, Truck, ShieldCheck, RefreshCw, Star, Tag, Mail } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { ProductCard } from '@/components/ProductCard'
+import { HeroCarousel } from '@/components/HeroCarousel'
+import { CATEGORIES, PRODUCTS } from '@/data/products'
+import type { Category } from '@/data/products'
+import { useNewsletter } from '@/App'
 
-const PROGRAMS = [
-  {
-    icon: EspressoIcon,
-    title: "SCA Barista Skills",
-    description:
-      "From Foundation to Professional level, master espresso extraction, milk techniques, and workflow efficiency.",
-    price: "From £250",
-  },
-  {
-    icon: DiamondIcon,
-    title: "SCA Sensory Skills",
-    description:
-      "Develop your palate with systematic training in flavour identification and coffee evaluation techniques.",
-    price: "From £295",
-  },
-  {
-    icon: SteamIcon,
-    title: "SCA Brewing",
-    description:
-      "Master manual brewing methods, extraction science, and recipe development for filter coffee excellence.",
-    price: "From £275",
-  },
-  {
-    icon: BeansIcon,
-    title: "SCA Roasting",
-    description:
-      "Learn roast profiling, sample roasting, and quality control on professional equipment.",
-    price: "From £395",
-  },
-  {
-    icon: StarIcon,
-    title: "Q Grader Certification",
-    description:
-      "The gold standard in coffee quality assessment. Intensive 6-day programme with CQI certification.",
-    price: "£2,500",
-  },
-  {
-    icon: PaletteIcon,
-    title: "Green Coffee",
-    description:
-      "Understand coffee origins, processing methods, and sourcing strategies for quality green beans.",
-    price: "From £325",
-  },
-];
+interface HomeProps {
+  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigateToProduct: (id: string) => void
+}
 
-const STATS = [
-  { number: "500+", label: "Students Trained" },
-  { number: "15+", label: "SCA Certifications" },
-  { number: "20+", label: "Years Experience" },
-  { number: "100%", label: "Pass Rate" },
-];
+export function Home({ navigate, navigateToProduct }: HomeProps) {
+  const { openNewsletter } = useNewsletter()
+  // Surface real, in-stock products first
+  const realProducts = PRODUCTS.filter(
+    (p) => p.image && !p.soldOut && p.badge !== 'Coming Soon' && p.badge !== 'Enquire',
+  )
+  const bestSellers = realProducts.slice(0, 4)
 
-const CREDENTIALS = [
-  {
-    icon: SealIcon,
-    title: "SCA Premier Campus",
-    description: "Specialty Coffee Association approved training facility",
-  },
-  {
-    icon: GearIcon,
-    title: "CQI Licensed",
-    description: "Coffee Quality Institute certification centre",
-  },
-  {
-    icon: SparkleIcon,
-    title: "AST Trainers",
-    description: "Authorised SCA Trainers with industry credentials",
-  },
-  {
-    icon: DiamondIcon,
-    title: "Q Grader Instructors",
-    description: "Certified Q Instructors for professional calibration",
-  },
-];
-
-export default function Home() {
   return (
-    <>
-      <section className="relative flex h-[600px] items-center overflow-hidden bg-gradient-to-br from-charcoal to-charcoal-light">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 80%, rgba(201, 169, 98, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(44, 74, 94, 0.2) 0%, transparent 50%)",
-          }}
-        />
-        <div className="relative z-10 max-w-[700px] px-20 max-md:px-10">
-          <div className="mb-6 inline-block bg-gold px-5 py-2 text-xs font-semibold uppercase tracking-[2px] text-charcoal">
-            SCA Premier Campus
-          </div>
-          <h1 className="mb-5 font-serif text-[52px] leading-[1.2] text-white max-md:text-[38px]">
-            Master the Art & Science of{" "}
-            <span className="text-gold">Specialty Coffee</span>
-          </h1>
-          <p className="mb-9 text-lg leading-[1.7] text-white/80">
-            London's only SCA & CQI approved training centre. From barista
-            foundations to Q Grader certification, elevate your coffee career
-            with world-class education.
-          </p>
-          <div className="flex gap-4 max-md:flex-col">
-            <Button asChild>
-              <Link to="/courses">Explore Courses</Link>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link to="/contact">Book a Tour</Link>
-            </Button>
-          </div>
-        </div>
-        <div className="absolute right-[-50px] top-1/2 hidden h-[550px] w-[550px] -translate-y-1/2 items-center justify-center md:flex">
-          <div
-            className="flex h-full w-full items-center justify-center"
-            style={{
-              background:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='90' fill='%23c9a962' opacity='0.1'/%3E%3Ccircle cx='100' cy='100' r='70' fill='%23c9a962' opacity='0.15'/%3E%3Ccircle cx='100' cy='100' r='50' fill='%23c9a962' opacity='0.2'/%3E%3C/svg%3E\") center/contain no-repeat",
-            }}
-          >
-            <div className="flex h-[350px] w-[350px] items-center justify-center rounded-full bg-gradient-to-br from-brand-blue to-brand-blue-light shadow-[0_30px_60px_rgba(0,0,0,0.3)]">
-              <CoffeeCupIcon className="h-[150px] w-[150px] fill-gold" />
+    <div>
+      {/* ANNOUNCEMENT / PROMO STRIP */}
+      <div className="bg-copper text-accent-foreground py-2.5 text-center text-[11px] font-sans-alt uppercase tracking-[0.22em]">
+        ✦ Free UK delivery over £40 · Same-day dispatch on orders before 2pm ✦
+      </div>
+
+      <HeroCarousel navigate={navigate} />
+
+      {/* BEST SELLERS — pulled right under hero */}
+      <section id="best-sellers" className="max-w-7xl mx-auto px-4 sm:px-6 pt-12 md:pt-16 pb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-8">
+          <div>
+            <div className="font-sans-alt text-[11px] uppercase tracking-[0.22em] text-copper mb-2">
+              ✦ Best Sellers
             </div>
+            <h2 className="text-2xl md:text-4xl font-semibold leading-tight">
+              What everyone's buying
+            </h2>
+          </div>
+          <button
+            onClick={() => navigate('home-equipment')}
+            className="font-sans-alt text-xs uppercase tracking-[0.18em] text-foreground hover:text-copper border-b border-foreground/30 hover:border-copper pb-1 transition-colors self-start sm:self-auto"
+          >
+            View All →
+          </button>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+          {bestSellers.map((p) => (
+            <ProductCard
+              key={p.id}
+              product={p}
+              onClick={() => navigateToProduct(p.id)}
+              onEnquire={() => navigate('contact')}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* TRUST BAND */}
+      <section className="bg-card border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { icon: Truck, title: 'Free UK delivery', sub: 'On orders over £40' },
+            { icon: RefreshCw, title: '14-day returns', sub: 'No-questions-asked' },
+            { icon: ShieldCheck, title: '2-year warranty', sub: 'On all equipment' },
+            { icon: Star, title: 'Rated 4.8/5', sub: 'By 320+ customers' },
+          ].map((item, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-secondary/60 flex items-center justify-center shrink-0">
+                <item.icon className="w-4 h-4 text-primary" />
+              </div>
+              <div>
+                <div className="text-sm font-semibold leading-tight">{item.title}</div>
+                <div className="text-[11px] text-muted-foreground">{item.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SHOP BY CATEGORY — compact horizontal */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+        <div className="text-center mb-8">
+          <div className="font-sans-alt text-[11px] uppercase tracking-[0.22em] text-copper mb-2">
+            Shop By Category
+          </div>
+          <h2 className="text-2xl md:text-4xl font-semibold">Find what you need</h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {CATEGORIES.map((cat, i) => {
+            const isDark = i % 2 === 0
+            return (
+              <button
+                key={cat.id}
+                onClick={() => navigate(cat.id)}
+                className={`group relative overflow-hidden h-40 md:h-44 lg:h-48 text-left ${
+                  isDark ? 'bg-forest-deep' : 'bg-coffee-bean'
+                } text-primary-foreground`}
+              >
+                <span className="absolute -bottom-6 -right-3 text-[100px] lg:text-[120px] font-bold opacity-[0.08] leading-none font-serif">
+                  0{i + 1}
+                </span>
+                <div className="relative h-full p-4 lg:p-5 flex flex-col justify-end">
+                  <h3 className="text-base lg:text-xl font-semibold mb-1.5 leading-tight">{cat.label}</h3>
+                  <div className="inline-flex items-center gap-1.5 text-[10px] lg:text-[11px] font-sans-alt uppercase tracking-[0.18em] text-copper group-hover:gap-2.5 transition-all">
+                    Shop <ArrowRight className="w-3 h-3 lg:w-3.5 lg:h-3.5" />
+                  </div>
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF / REVIEWS */}
+      <section className="bg-coffee-bean text-primary-foreground py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10">
+            <div className="flex items-center justify-center gap-1 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 fill-copper text-copper" />
+              ))}
+            </div>
+            <div className="font-sans-alt text-[11px] uppercase tracking-[0.22em] text-copper mb-2">
+              Rated Excellent · 320+ Reviews
+            </div>
+            <h2 className="text-2xl md:text-4xl font-semibold">Loved by home brewers</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                quote:
+                  'Genuinely the upgrade my morning needed. The Comandante is a joy to use, and shipping was lightning fast.',
+                name: 'James R.',
+                product: 'Comandante C40 MK4 Nitro',
+              },
+              {
+                quote:
+                  "Bought the Wilfa bundle on sale — already paid for itself in coffee shop runs I'm not doing anymore.",
+                name: 'Priya K.',
+                product: 'Wilfa Performance Bundle',
+              },
+              {
+                quote:
+                  'Expert advice, real specialists. They helped me pick the right grinder for my budget. Buy with confidence.',
+                name: 'Tom W.',
+                product: 'Baratza Encore ESP Pro',
+              },
+            ].map((r, i) => (
+              <div key={i} className="bg-forest-deep/60 border border-white/10 p-5">
+                <div className="flex gap-0.5 mb-3">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-3.5 h-3.5 fill-copper text-copper" />
+                  ))}
+                </div>
+                <p className="text-sm leading-relaxed opacity-90 mb-4">"{r.quote}"</p>
+                <div className="text-xs">
+                  <div className="font-semibold">{r.name}</div>
+                  <div className="opacity-60 mt-0.5">on {r.product}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="grid grid-cols-4 gap-8 bg-brand-blue px-[60px] py-12 max-md:grid-cols-2 max-md:px-5">
-        {STATS.map((s) => (
-          <div key={s.label} className="text-center text-white">
-            <span className="block font-serif text-5xl text-gold">
-              {s.number}
-            </span>
-            <span className="text-sm uppercase tracking-[1px] opacity-90">
-              {s.label}
+      {/* NEWSLETTER — topic-segmented, opens full modal */}
+      <section className="bg-background py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <div className="inline-flex items-center gap-2 bg-copper/15 border border-copper/30 px-3 py-1.5 mb-5">
+            <Tag className="w-3.5 h-3.5 text-copper" />
+            <span className="font-sans-alt text-[10px] uppercase tracking-[0.22em] text-copper">
+              First to Know
             </span>
           </div>
-        ))}
-      </div>
-
-      <Section>
-        <SectionHeader
-          label="Our Programs"
-          title="Professional Coffee Certifications"
-          subtitle="Industry-recognised qualifications delivered by certified trainers with real-world experience"
-        />
-        <div className="grid grid-cols-3 gap-[30px] max-[1200px]:grid-cols-2 max-md:grid-cols-1">
-          {PROGRAMS.map((p) => (
-            <article
-              key={p.title}
-              className="border border-cream-dark bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
-            >
-              <div className="flex h-[200px] items-center justify-center bg-cream">
-                <p.icon className="h-20 w-20 fill-gold" />
-              </div>
-              <div className="p-6">
-                <h3 className="mb-2.5 font-serif text-xl text-charcoal">
-                  {p.title}
-                </h3>
-                <p className="mb-5 text-sm text-ink-muted">{p.description}</p>
-                <div className="flex items-center justify-between border-t border-cream-dark pt-4">
-                  <span className="text-lg font-semibold text-brand-blue">
-                    {p.price}
-                  </span>
-                  <Link
-                    to="/courses"
-                    className="text-[13px] font-semibold uppercase tracking-[1px] text-gold no-underline"
-                  >
-                    Learn More →
-                  </Link>
-                </div>
-              </div>
-            </article>
-          ))}
+          <h2 className="text-3xl md:text-4xl font-semibold mb-3">Join the club</h2>
+          <p className="text-muted-foreground mb-7 max-w-lg mx-auto">
+            Sign up for first dibs on new arrivals, course dates, and brewing tips — tailored to the topics you actually care about.
+          </p>
+          <Button
+            onClick={openNewsletter}
+            className="bg-primary hover:bg-copper text-primary-foreground rounded-none font-sans-alt uppercase tracking-[0.18em] text-xs px-8 py-6"
+          >
+            <Mail className="w-4 h-4 mr-2" />
+            Choose Your Topics & Subscribe
+          </Button>
+          <p className="text-[10px] text-muted-foreground mt-3 font-sans-alt uppercase tracking-[0.14em]">
+            6 topics · Pick the ones you want · Unsubscribe anytime
+          </p>
         </div>
-      </Section>
-
-      <Section className="bg-cream">
-        <SectionHeader
-          label="Credentials"
-          title="Internationally Recognised Standards"
-        />
-        <div className="grid grid-cols-4 gap-10 max-md:grid-cols-2">
-          {CREDENTIALS.map((c) => (
-            <div key={c.title} className="text-center">
-              <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-[0_5px_20px_rgba(0,0,0,0.05)]">
-                <c.icon className="h-10 w-10 fill-gold" />
-              </div>
-              <h4 className="mb-2 text-sm uppercase tracking-[1px] text-charcoal">
-                {c.title}
-              </h4>
-              <p className="text-[13px] text-ink-muted">{c.description}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-    </>
-  );
+      </section>
+    </div>
+  )
 }
