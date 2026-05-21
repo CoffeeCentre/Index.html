@@ -226,7 +226,7 @@ export const PRODUCTS: Product[] = [
     id: 'gc-geisha-natural-lot-4',
     name: 'Geisha Natural Lot 4 — Finca Esther, Panama',
     category: 'green-coffee',
-    price: 60.0,
+    price: 75.0,
     unit: '1kg',
     origin: 'Boquete, Chiriquí — Panama',
     notes: ['Floral', 'Stone fruit', 'Tropical'],
