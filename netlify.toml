@@ -31,9 +31,6 @@
     Cross-Origin-Opener-Policy = "same-origin"
     # Tighten what *our* responses can be embedded into elsewhere.
     Cross-Origin-Resource-Policy = "same-origin"
-    # Hint to crawlers / archivers — leave default behaviour (remove this line
-    # if you ever want to block indexing).
-    X-Robots-Tag = "index, follow"
     # Content Security Policy. Notes:
     #  - 'unsafe-inline' is included for style-src only because Radix UI +
     #    React inline-style props (HeroCarousel parallax, useTilt, etc.) need
@@ -59,3 +56,17 @@
   for = "/index.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# ---- Preview-deploy indexing: keep PR previews out of search results ----
+# Deploy previews (PRs) and branch deploys get an extra X-Robots-Tag that
+# overrides the production-permissive default. Production deploys of `main`
+# stay indexable.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex, nofollow"
