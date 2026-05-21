@@ -4,32 +4,32 @@
 
 @layer base {
   :root {
-    /* Cream + warm near-black + brick red palette */
-    --background: 36 33% 94%;        /* warm cream */
-    --foreground: 20 18% 10%;        /* warm near-black */
-    --card: 36 40% 97%;
-    --card-foreground: 20 18% 10%;
-    --popover: 36 40% 97%;
-    --popover-foreground: 20 18% 10%;
-    --primary: 20 18% 10%;           /* warm near-black */
-    --primary-foreground: 36 33% 94%;
-    --secondary: 30 22% 86%;
-    --secondary-foreground: 20 18% 10%;
-    --muted: 32 18% 88%;
-    --muted-foreground: 25 10% 38%;
-    --accent: 0 65% 42%;             /* brick red */
-    --accent-foreground: 36 33% 96%;
-    --destructive: 0 70% 42%;
-    --destructive-foreground: 36 33% 96%;
-    --border: 30 18% 80%;
-    --input: 30 18% 84%;
-    --ring: 0 65% 42%;
+    /* Bold Modernist — amber + cream + espresso (BLK & Bold inspired) */
+    --background: 48 96% 89%;          /* light cream #FEF3C7 */
+    --foreground: 22 92% 14%;          /* espresso #451A03 */
+    --card: 0 0% 100%;                 /* white surfaces */
+    --card-foreground: 22 92% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 22 92% 14%;
+    --primary: 22 92% 14%;             /* espresso (dark text / pill CTAs) */
+    --primary-foreground: 48 96% 89%;
+    --secondary: 45 80% 78%;           /* softer amber-cream */
+    --secondary-foreground: 22 92% 14%;
+    --muted: 45 60% 85%;
+    --muted-foreground: 22 30% 28%;
+    --accent: 45 97% 56%;              /* amber #FBBF24 */
+    --accent-foreground: 22 92% 14%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 48 96% 95%;
+    --border: 22 25% 80%;
+    --input: 22 25% 84%;
+    --ring: 45 97% 56%;
     --radius: 0.25rem;
 
-    /* Brand vars — repurposed */
-    --forest-deep: 20 25% 7%;        /* deep warm near-black (footer/dark sections) */
-    --coffee-bean: 20 20% 14%;       /* dark warm brown for secondary dark sections */
-    --copper: 0 65% 42%;             /* brick red — used as accent everywhere */
+    /* Brand vars — repurposed for the new palette */
+    --forest-deep: 22 92% 14%;         /* espresso (was deep near-black) — dark sections */
+    --coffee-bean: 22 70% 22%;         /* slightly lifted espresso for secondary dark sections */
+    --copper: 45 97% 56%;              /* amber — the all-purpose accent (was brick red) */
   }
 }
 
@@ -39,29 +39,35 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Georgia', 'Cormorant Garamond', serif;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Georgia', 'Playfair Display', serif;
-    letter-spacing: -0.01em;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
+/* Small-caps eyebrow / metadata labels — used throughout the app */
 .font-sans-alt {
-  font-family: 'Helvetica Neue', 'Arial', sans-serif;
-  letter-spacing: 0.04em;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.18em;
 }
 
 .product-card {
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  border-bottom: 4px solid hsl(var(--foreground));
 }
 .product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px -20px rgba(20, 14, 10, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px -16px rgba(69, 26, 3, 0.3);
+  border-bottom-color: hsl(var(--copper));
 }
 
 .hero-overlay {
-  background: linear-gradient(120deg, rgba(20, 14, 10, 0.78) 0%, rgba(20, 14, 10, 0.45) 50%, rgba(20, 14, 10, 0.15) 100%);
+  background: linear-gradient(120deg, rgba(69, 26, 3, 0.85) 0%, rgba(69, 26, 3, 0.55) 50%, rgba(69, 26, 3, 0.2) 100%);
 }
 
 @keyframes marquee {
@@ -74,7 +80,7 @@
 
 .bean-pattern {
   background-color: hsl(var(--background));
-  background-image: radial-gradient(ellipse 8px 14px at center, rgba(45, 31, 18, 0.06) 50%, transparent 51%);
+  background-image: radial-gradient(ellipse 8px 14px at center, rgba(69, 26, 3, 0.1) 50%, transparent 51%);
   background-size: 50px 50px;
   background-position: 0 0, 25px 25px;
 }
@@ -82,7 +88,7 @@
 /* Prose styling for Shopify HTML product descriptions */
 .prose-coffee {
   color: hsl(var(--foreground));
-  font-family: 'Georgia', serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.7;
 }
 .prose-coffee p {
@@ -94,12 +100,13 @@
   color: hsl(var(--foreground));
 }
 .prose-coffee h4 {
-  font-family: 'Georgia', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: hsl(var(--foreground));
   margin: 2em 0 0.6em 0;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 .prose-coffee h4:first-child {
   margin-top: 0;
@@ -117,11 +124,11 @@
   color: hsl(var(--muted-foreground));
 }
 .prose-coffee ul li::before {
-  content: '→';
+  content: '▸';
   position: absolute;
   left: 0;
   color: hsl(var(--copper));
-  font-weight: 600;
+  font-weight: 700;
 }
 .prose-coffee strong {
   font-weight: 600;
