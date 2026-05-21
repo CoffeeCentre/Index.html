@@ -273,7 +273,7 @@ export const PRODUCTS: Product[] = [
     id: 'ce-mahlkonig-ek43',
     name: 'Mahlkönig EK43 Commercial Grinder — Enquire',
     category: 'commercial-equipment',
-    price: 2495,
+    price: 2700,
     description: '98 mm flat-burr commercial grinder. The industry reference for filter brewing at scale — found in roasteries, championship setups and high-volume specialty bars. Speak to us about install, calibration and service.',
     productUrl: 'https://www.mahlkoenig.com/products/ek43',
     badge: 'Enquire',
