@@ -56,14 +56,136 @@
   letter-spacing: 0.18em;
 }
 
+/* Product card: transform driven by useTilt() inline style; CSS owns the
+   shadow + border colour transition so the hover still feels lively even
+   without mouse-tracking. */
 .product-card {
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  transition: box-shadow 0.35s ease, border-color 0.3s ease;
   border-bottom: 4px solid hsl(var(--foreground));
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 .product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px -16px rgba(69, 26, 3, 0.3);
+  box-shadow:
+    0 30px 60px -25px rgba(69, 26, 3, 0.45),
+    0 10px 20px -10px rgba(251, 191, 36, 0.25);
   border-bottom-color: hsl(var(--copper));
+}
+.product-card:hover .lift-on-hover {
+  transform: translate3d(0, 0, 50px);
+}
+.lift-on-hover {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- 3D motion system --- */
+@keyframes float-3d {
+  0%, 100% { transform: translate3d(0, 0, 0) rotateZ(0deg); }
+  50%      { transform: translate3d(0, -10px, 0) rotateZ(2deg); }
+}
+@keyframes spin-slow-y {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); }
+  50%      { box-shadow: 0 0 0 14px rgba(251, 191, 36, 0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes reveal-up {
+  from { opacity: 0; transform: translate3d(0, 48px, 0) rotateX(-14deg); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0)   rotateX(0deg); }
+}
+@keyframes reveal-tilt-in {
+  from { opacity: 0; transform: perspective(800px) translate3d(0, 60px, -60px) rotateX(20deg) scale(0.94); }
+  to   { opacity: 1; transform: perspective(800px) translate3d(0, 0, 0) rotateX(0) scale(1); }
+}
+@keyframes bean-rain {
+  0%   { transform: translate3d(0, -10vh, 0) rotate(0deg); }
+  100% { transform: translate3d(0, 110vh, 0) rotate(540deg); }
+}
+@keyframes badge-pop {
+  0%   { transform: translate3d(0, -6px, 0) scale(0.6); opacity: 0; }
+  60%  { transform: translate3d(0, 0, 0) scale(1.12); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+}
+
+.float-3d {
+  animation: float-3d 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.spin-slow-y {
+  animation: spin-slow-y 12s linear infinite;
+  transform-style: preserve-3d;
+  display: inline-block;
+}
+.pulse-amber {
+  animation: pulse-amber 2.2s ease-out infinite;
+}
+.shimmer-amber {
+  background-image: linear-gradient(110deg,
+    hsl(var(--copper)) 0%,
+    hsl(45 100% 78%) 50%,
+    hsl(var(--copper)) 100%);
+  background-size: 220% 100%;
+  animation: shimmer 3.6s linear infinite;
+}
+.badge-pop {
+  animation: badge-pop 0.55s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+/* Scroll reveal: ship hidden, the JS hook flips .is-revealed to play */
+.reveal-up {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.reveal-up.is-revealed {
+  animation: reveal-up 0.85s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+}
+.reveal-tilt {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.reveal-tilt.is-revealed {
+  animation: reveal-tilt-in 0.9s cubic-bezier(0.2, 0.85, 0.2, 1) forwards;
+}
+
+/* Generic perspective wrapper for tilt cards */
+.perspective-card {
+  perspective: 1200px;
+}
+
+/* Falling-beans particle layer (mounted once at the app root) */
+.bean-rain-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.bean-particle {
+  position: absolute;
+  top: 0;
+  display: block;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%,
+    hsl(22 80% 28%) 0%,
+    hsl(22 92% 14%) 65%);
+  animation-name: bean-rain;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bean-rain-layer { display: none; }
+  .float-3d, .spin-slow-y, .pulse-amber, .shimmer-amber,
+  .reveal-up, .reveal-tilt { animation: none !important; opacity: 1; }
+  .reveal-up, .reveal-tilt { transform: none !important; }
 }
 
 .hero-overlay {

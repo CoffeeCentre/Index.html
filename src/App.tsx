@@ -4,6 +4,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { CartSheet } from '@/components/CartSheet'
 import { NewsletterModal } from '@/components/NewsletterModal'
+import { BackgroundBeans } from '@/components/BackgroundBeans'
 import { Home } from '@/pages/Home'
 import { CategoryPage } from '@/pages/CategoryPage'
 import { ProductPage } from '@/pages/ProductPage'
@@ -122,7 +123,9 @@ function AppInner() {
           consumePrefill,
         }}
       >
-        <div className="min-h-screen flex flex-col bean-pattern">
+        <div className="relative min-h-screen flex flex-col bean-pattern">
+          <BackgroundBeans />
+          <div className="relative z-10 flex flex-col flex-1">
           <Header currentPage={headerPage} navigate={navigate} />
           <main className="flex-1">
             {page === 'home' && <Home navigate={navigate} navigateToProduct={navigateToProduct} />}
@@ -149,6 +152,7 @@ function AppInner() {
             {page === 'contact' && <Contact />}
           </main>
           <Footer navigate={navigate} />
+          </div>
           <CartSheet navigate={navigate} />
           <NewsletterModal open={newsletterOpen} onOpenChange={setNewsletterOpen} />
         </div>

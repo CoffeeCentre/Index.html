@@ -19,7 +19,7 @@ export function Logo({ className = '', light = false }: LogoProps) {
         <img
           src={LOGO_URL}
           alt="Coffee Centre London"
-          className="h-10 md:h-12 w-auto"
+          className="h-10 md:h-12 w-auto float-3d"
           style={{ filter: light ? 'brightness(0) invert(1)' : 'none' }}
           onError={() => setImgError(true)}
         />

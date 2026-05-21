@@ -4,6 +4,8 @@ import type { Product, Category } from '@/data/products'
 import { useCart } from '@/contexts/CartContext'
 import { useContactPrefill } from '@/App'
 import { Button } from '@/components/ui/button'
+import { useTilt } from '@/hooks/use-tilt'
+import { useReveal } from '@/hooks/use-reveal'
 
 interface ProductCardProps {
   product: Product
@@ -567,6 +569,8 @@ function DrumRoaster() {
 export function ProductCard({ product, onClick, onEnquire }: ProductCardProps) {
   const { add } = useCart()
   const { setPrefill } = useContactPrefill()
+  const tilt = useTilt<HTMLDivElement>({ max: 10, scale: 1.025 })
+  const reveal = useReveal<HTMLDivElement>({ threshold: 0.12 })
   const displayPrice = product.salePrice ?? product.price
   const isEnquireOnly =
     product.price === 0 ||
@@ -591,14 +595,24 @@ export function ProductCard({ product, onClick, onEnquire }: ProductCardProps) {
   }
 
   return (
+    <div
+      ref={(el) => {
+        ;(tilt.ref as { current: HTMLDivElement | null }).current = el
+        ;(reveal.ref as { current: HTMLDivElement | null }).current = el
+      }}
+      onMouseMove={tilt.onMouseMove}
+      onMouseLeave={tilt.onMouseLeave}
+      style={tilt.style}
+      className={`perspective-card h-full transition-opacity duration-700 ${reveal.revealed ? 'opacity-100' : 'opacity-0'}`}
+    >
     <article
-      className={`product-card group bg-card border border-border/60 overflow-hidden flex flex-col ${onClick ? 'cursor-pointer' : ''}`}
+      className={`product-card group bg-card border border-border/60 overflow-hidden flex flex-col h-full ${onClick ? 'cursor-pointer' : ''}`}
       onClick={onClick}
     >
       <div className="relative">
         <ProductVisual product={product} />
         {product.badge && (
-          <span className={`absolute top-3 left-3 text-[10px] uppercase font-sans-alt tracking-[0.15em] px-2.5 py-1 ${
+          <span className={`badge-pop lift-on-hover absolute top-3 left-3 text-[10px] uppercase font-sans-alt tracking-[0.15em] px-2.5 py-1 ${
             product.soldOut
               ? 'bg-foreground/80 text-background'
               : product.badge === 'Sale'
@@ -615,7 +629,7 @@ export function ProductCard({ product, onClick, onEnquire }: ProductCardProps) {
               e.stopPropagation()
               add(product)
             }}
-            className="absolute bottom-3 right-3 bg-primary text-primary-foreground hover:bg-copper rounded-full w-10 h-10 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+            className="lift-on-hover group-hover:pulse-amber absolute bottom-3 right-3 bg-primary text-primary-foreground hover:bg-copper rounded-full w-10 h-10 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
             aria-label="Add to cart"
           >
             <Plus className="w-4 h-4" />
@@ -736,5 +750,6 @@ export function ProductCard({ product, onClick, onEnquire }: ProductCardProps) {
         </div>
       </div>
     </article>
+    </div>
   )
 }
