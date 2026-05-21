@@ -11,7 +11,7 @@
          NewsletterModal POSTs to / with the same field names. Submissions
          appear in Netlify dashboard → Forms, and email notifications are
          configured under Site settings → Forms → Form notifications. -->
-    <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+    <form name="newsletter" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
       <input type="text" name="firstName" />
       <input type="email" name="email" />
       <input type="text" name="topics" />
