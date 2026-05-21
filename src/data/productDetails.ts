@@ -263,4 +263,29 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
   <li>Grind directly into a portafilter with included adapters</li>
 </ul>`,
   },
+  // Mahlkönig EK43 — official product photos aren't included here. Add them
+  // by uploading via Shopify (then list cdn.shopify.com URLs below), or by
+  // dropping files into public/ and referencing /img/... paths. Don't pull
+  // them straight from mahlkoenig.com without dealer permission.
+  'ce-mahlkonig-ek43': {
+    images: [],
+    descriptionHtml: `
+      <h4>Why the EK43</h4>
+      <p>Built in Germany as a production-shop grinder, the EK43 became the de-facto reference for filter brewing in specialty coffee after its breakthrough at the World Brewers Cup. It is in roasteries, championship setups and high-volume specialty bars worldwide — the grinder cafés benchmark every other filter grinder against.</p>
+      <h4>What you're getting</h4>
+      <ul>
+        <li><strong>98 mm flat steel burrs</strong> — the dimension that defines its cup quality</li>
+        <li><strong>High-torque German-built motor</strong> — runs all day in a busy bar or roastery</li>
+        <li><strong>Stepless grind adjustment</strong> — micro-precision dialling from cupping to espresso</li>
+        <li><strong>Direct-grind dispensing</strong> — straight into bag, brewer or basket depending on variant</li>
+      </ul>
+      <h4>What we add</h4>
+      <ul>
+        <li>Bar consultation — match the EK43 spec and variant to your menu, volume and workflow</li>
+        <li>On-site install, commissioning and burr alignment on delivery</li>
+        <li>Ongoing service, parts and burr replacements</li>
+      </ul>
+      <p><em>POA — speak to us for a fully-installed quote. Authorised supply, full Mahlkönig warranty.</em></p>
+    `,
+  },
 }
