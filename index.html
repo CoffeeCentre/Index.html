@@ -7,6 +7,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Hidden form for Netlify Forms detection at deploy time. The React
+         NewsletterModal POSTs to / with the same field names. Submissions
+         appear in Netlify dashboard → Forms, and email notifications are
+         configured under Site settings → Forms → Form notifications. -->
+    <form name="newsletter" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="firstName" />
+      <input type="email" name="email" />
+      <input type="text" name="topics" />
+      <input type="text" name="includeOffers" />
+      <input type="text" name="bot-field" />
+    </form>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

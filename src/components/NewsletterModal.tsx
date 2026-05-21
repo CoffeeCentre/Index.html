@@ -45,9 +45,33 @@ export function NewsletterModal({ open, onOpenChange }: NewsletterModalProps) {
     setSelectedTopics(allSelected ? new Set() : new Set(TOPICS.map((t) => t.id)))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setStep('success')
+    setSubmitting(true)
+    setSubmitError(null)
+    try {
+      const body = new URLSearchParams({
+        'form-name': 'newsletter',
+        firstName,
+        email,
+        topics: Array.from(selectedTopics).join(', '),
+        includeOffers: includeOffers ? 'yes' : 'no',
+      })
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      })
+      if (!res.ok) throw new Error(`Submission failed (${res.status})`)
+      setStep('success')
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Submission failed')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const handleClose = () => {
@@ -70,7 +94,21 @@ export function NewsletterModal({ open, onOpenChange }: NewsletterModalProps) {
         </DialogClose>
 
         {step === 'form' ? (
-          <form onSubmit={handleSubmit}>
+          <form
+            name="newsletter"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+          >
+            {/* Netlify needs these hidden fields to wire the submission. */}
+            <input type="hidden" name="form-name" value="newsletter" />
+            <p hidden>
+              <label>
+                Don't fill this out if you're human:{' '}
+                <input name="bot-field" tabIndex={-1} autoComplete="off" />
+              </label>
+            </p>
             {/* Compact header band */}
             <div className="bg-forest-deep text-primary-foreground px-6 py-4 relative overflow-hidden">
               <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -112,6 +150,7 @@ export function NewsletterModal({ open, onOpenChange }: NewsletterModalProps) {
                   </label>
                   <input
                     type="text"
+                    name="firstName"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="Your name"
@@ -124,6 +163,7 @@ export function NewsletterModal({ open, onOpenChange }: NewsletterModalProps) {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -203,12 +243,17 @@ export function NewsletterModal({ open, onOpenChange }: NewsletterModalProps) {
               <div className="pt-1">
                 <Button
                   type="submit"
-                  disabled={!email || selectedTopics.size === 0}
+                  disabled={submitting || !email || selectedTopics.size === 0}
                   className="w-full bg-primary hover:bg-copper text-primary-foreground rounded-none font-sans-alt uppercase tracking-[0.18em] text-xs py-5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Mail className="w-4 h-4 mr-2" />
-                  Subscribe
+                  {submitting ? 'Subscribing…' : 'Subscribe'}
                 </Button>
+                {submitError && (
+                  <p className="text-[11px] text-destructive text-center mt-2">
+                    {submitError}. Please try again or email us directly.
+                  </p>
+                )}
                 <p className="text-[10px] text-muted-foreground text-center font-sans-alt uppercase tracking-[0.14em] mt-2">
                   Unsubscribe any time · We never share your details
                 </p>
