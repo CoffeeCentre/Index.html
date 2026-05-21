@@ -1,4 +1,4 @@
-import { ArrowRight, Truck, ShieldCheck, RefreshCw, Star, Tag, Mail } from 'lucide-react'
+import { ArrowRight, Truck, ShieldCheck, RefreshCw, Award, Tag, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ProductCard } from '@/components/ProductCard'
 import { HeroCarousel } from '@/components/HeroCarousel'
@@ -65,7 +65,7 @@ export function Home({ navigate, navigateToProduct }: HomeProps) {
             { icon: Truck, title: 'Free UK delivery', sub: 'On orders over £40' },
             { icon: RefreshCw, title: '14-day returns', sub: 'No-questions-asked' },
             { icon: ShieldCheck, title: '2-year warranty', sub: 'On all equipment' },
-            { icon: Star, title: 'Rated 4.8/5', sub: 'By 320+ customers' },
+            { icon: Award, title: 'SCA & CQI approved', sub: 'Premier training centre' },
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-secondary/60 flex items-center justify-center shrink-0">
@@ -111,58 +111,6 @@ export function Home({ navigate, navigateToProduct }: HomeProps) {
               </button>
             )
           })}
-        </div>
-      </section>
-
-      {/* SOCIAL PROOF / REVIEWS */}
-      <section className="bg-coffee-bean text-primary-foreground py-14">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <div className="flex items-center justify-center gap-1 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-copper text-copper" />
-              ))}
-            </div>
-            <div className="font-sans-alt text-[11px] uppercase tracking-[0.22em] text-copper mb-2">
-              Rated Excellent · 320+ Reviews
-            </div>
-            <h2 className="text-2xl md:text-4xl font-semibold">Loved by home brewers</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {[
-              {
-                quote:
-                  'Genuinely the upgrade my morning needed. The Comandante is a joy to use, and shipping was lightning fast.',
-                name: 'James R.',
-                product: 'Comandante C40 MK4 Nitro',
-              },
-              {
-                quote:
-                  "Bought the Wilfa bundle on sale — already paid for itself in coffee shop runs I'm not doing anymore.",
-                name: 'Priya K.',
-                product: 'Wilfa Performance Bundle',
-              },
-              {
-                quote:
-                  'Expert advice, real specialists. They helped me pick the right grinder for my budget. Buy with confidence.',
-                name: 'Tom W.',
-                product: 'Baratza Encore ESP Pro',
-              },
-            ].map((r, i) => (
-              <div key={i} className="bg-forest-deep/60 border border-white/10 p-5">
-                <div className="flex gap-0.5 mb-3">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-3.5 h-3.5 fill-copper text-copper" />
-                  ))}
-                </div>
-                <p className="text-sm leading-relaxed opacity-90 mb-4">"{r.quote}"</p>
-                <div className="text-xs">
-                  <div className="font-semibold">{r.name}</div>
-                  <div className="opacity-60 mt-0.5">on {r.product}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
