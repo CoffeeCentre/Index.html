@@ -12,8 +12,50 @@
   to = "/index.html"
   status = 200
 
-# Long-cache the hashed JS/CSS Vite emits to dist/assets/*
+# ---- Security headers (applied to every response) ----
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Force HTTPS for two years and signal preload-eligibility.
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    # MIME-sniffing off — browser must trust the Content-Type we send.
+    X-Content-Type-Options = "nosniff"
+    # Clickjacking protection (CSP frame-ancestors below is the modern
+    # equivalent; X-Frame-Options is kept for older-browser coverage).
+    X-Frame-Options = "DENY"
+    # Leak as little referrer info as practical when navigating off-site.
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # Disable browser features we don't use, so a future XSS can't enable them.
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+    # Process-isolation against Spectre-class cross-origin reads.
+    Cross-Origin-Opener-Policy = "same-origin"
+    # Tighten what *our* responses can be embedded into elsewhere.
+    Cross-Origin-Resource-Policy = "same-origin"
+    # Hint to crawlers / archivers — leave default behaviour (remove this line
+    # if you ever want to block indexing).
+    X-Robots-Tag = "index, follow"
+    # Content Security Policy. Notes:
+    #  - 'unsafe-inline' is included for style-src only because Radix UI +
+    #    React inline-style props (HeroCarousel parallax, useTilt, etc.) need
+    #    it. Script-src is strict 'self' — no inline JS.
+    #  - img-src allows cdn.shopify.com (product photos + brand logo) and
+    #    data: URIs (the embedded Geisha b64 photo + lucide SVG fallbacks).
+    #  - font-src allows Google Fonts (Inter + Space Grotesk woff2).
+    #  - The Shopify cart-permalink checkout is a top-level navigation, not a
+    #    fetch/form-action, so brewing.coffeecentre.london is intentionally
+    #    NOT in connect-src or form-action.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.shopify.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+
+# Long-cache the hashed JS/CSS Vite emits to dist/assets/*. Hashed filenames
+# mean redeploys invalidate automatically, so a year of cache is safe.
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Don't cache index.html — it points at the latest hashed bundle, and a stale
+# cached copy would pin the user on an old build.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
