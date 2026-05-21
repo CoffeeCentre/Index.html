@@ -26,3 +26,6 @@ dist-ssr
 # Project-specific build outputs
 bundle.html
 .parcel-cache/
+
+# Local deploy artifacts (Netlify Drop, etc.)
+*.zip
