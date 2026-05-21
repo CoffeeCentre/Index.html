@@ -269,6 +269,15 @@ export const PRODUCTS: Product[] = [
     description: 'New and used drum roasters from 1kg to 60kg. Speak to us about lead times, financing and install.',
     badge: 'Enquire',
   },
+  {
+    id: 'ce-mahlkonig-ek43',
+    name: 'Mahlkönig EK43 Commercial Grinder — Enquire',
+    category: 'commercial-equipment',
+    price: 2495,
+    description: '98 mm flat-burr commercial grinder. The industry reference for filter brewing at scale — found in roasteries, championship setups and high-volume specialty bars. Speak to us about install, calibration and service.',
+    productUrl: 'https://www.mahlkoenig.com/products/ek43',
+    badge: 'Enquire',
+  },
 
   // Training & Courses
   {
