@@ -289,7 +289,7 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
     `,
   },
   'gc-geisha-washed-lot-49': {
-    images: [],
+    images: ['/img/geisha-washed-lot-49.png'],
     descriptionHtml: `
       <p><strong>Panamanian Geisha at 1,550 MASL.</strong> A classic washed lot from Finca Esther in Boquete, Chiriquí — sourced through Summit Specialty Coffee.</p>
       <p>Washed Boquete Geisha is the textbook cup that earned the variety its reputation: jasmine on the lift, stone fruit through the middle, and a long, tea-like finish. From the same farm as our Natural Lot 4, this washed presentation is the cleaner, more transparent expression of the terroir.</p>
@@ -316,7 +316,7 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
     `,
   },
   'gc-geisha-washed-anaerobic-lot-22': {
-    images: [],
+    images: ['/img/geisha-washed-anaerobic-lot-22.png'],
     descriptionHtml: `
       <p><strong>Panamanian Geisha at 1,600 MASL.</strong> A washed-anaerobic lot from Finca La Fortuna in Boquete, Chiriquí — sourced through Summit Specialty Coffee.</p>
       <p>An anaerobic ferment on top of the classic washed process amplifies the variety's florals and adds a layer of tropical sweetness without sacrificing the cup clarity Boquete is known for. Jasmine on the front, bergamot through the middle, ripe tropical fruit on the finish.</p>
