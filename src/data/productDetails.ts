@@ -288,4 +288,58 @@ export const PRODUCT_DETAILS: Record<string, ProductDetail> = {
       <p><em>POA — speak to us for a fully-installed quote. Authorised supply, full Mahlkönig warranty.</em></p>
     `,
   },
+  'gc-geisha-washed-lot-49': {
+    images: [],
+    descriptionHtml: `
+      <p><strong>Panamanian Geisha at 1,550 MASL.</strong> A classic washed lot from Finca Esther in Boquete, Chiriquí — sourced through Summit Specialty Coffee.</p>
+      <p>Washed Boquete Geisha is the textbook cup that earned the variety its reputation: jasmine on the lift, stone fruit through the middle, and a long, tea-like finish. From the same farm as our Natural Lot 4, this washed presentation is the cleaner, more transparent expression of the terroir.</p>
+      <h3>Lot specs</h3>
+      <ul>
+        <li><strong>Origin:</strong> Boquete, Chiriquí — Panama</li>
+        <li><strong>Farm:</strong> Finca Esther</li>
+        <li><strong>Variety:</strong> Geisha</li>
+        <li><strong>Process:</strong> Washed</li>
+        <li><strong>Altitude:</strong> 1,550 MASL</li>
+        <li><strong>Lot:</strong> 49</li>
+        <li><strong>Pack size:</strong> 1 kg unroasted green</li>
+        <li><strong>Importer:</strong> Summit Specialty Coffee</li>
+      </ul>
+      <h3>Cup profile</h3>
+      <ul>
+        <li>Jasmine</li>
+        <li>Peach, white stone fruit</li>
+        <li>Bergamot</li>
+        <li>Juicy acidity, tea-like body, long finish</li>
+      </ul>
+      <h3>Roast recommendation</h3>
+      <p>Light to light-medium. Showcase on V60 and Kalita Wave — the classic filter platforms for washed Geisha. A stunning cupping coffee for sensory training and calibration sessions.</p>
+    `,
+  },
+  'gc-geisha-washed-anaerobic-lot-22': {
+    images: [],
+    descriptionHtml: `
+      <p><strong>Panamanian Geisha at 1,600 MASL.</strong> A washed-anaerobic lot from Finca La Fortuna in Boquete, Chiriquí — sourced through Summit Specialty Coffee.</p>
+      <p>An anaerobic ferment on top of the classic washed process amplifies the variety's florals and adds a layer of tropical sweetness without sacrificing the cup clarity Boquete is known for. Jasmine on the front, bergamot through the middle, ripe tropical fruit on the finish.</p>
+      <h3>Lot specs</h3>
+      <ul>
+        <li><strong>Origin:</strong> Boquete, Chiriquí — Panama</li>
+        <li><strong>Farm:</strong> Finca La Fortuna</li>
+        <li><strong>Variety:</strong> Geisha</li>
+        <li><strong>Process:</strong> Washed Anaerobic</li>
+        <li><strong>Altitude:</strong> 1,600 MASL</li>
+        <li><strong>Lot:</strong> 22</li>
+        <li><strong>Pack size:</strong> 1 kg unroasted green</li>
+        <li><strong>Importer:</strong> Summit Specialty Coffee</li>
+      </ul>
+      <h3>Cup profile</h3>
+      <ul>
+        <li>Jasmine, white flowers</li>
+        <li>Bergamot, citrus zest</li>
+        <li>Tropical fruit — passionfruit, mango</li>
+        <li>Syrupy body, tea-like clarity</li>
+      </ul>
+      <h3>Roast recommendation</h3>
+      <p>Light to light-medium — keep development time short to preserve the florals. Excellent on V60 and batch brew; a serious feature on a single-origin espresso menu if you have the volume for it.</p>
+    `,
+  },
 }

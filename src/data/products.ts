@@ -235,6 +235,30 @@ export const PRODUCTS: Product[] = [
     rating: 5,
     badge: 'New',
   },
+  {
+    id: 'gc-geisha-washed-lot-49',
+    name: 'Geisha Washed Lot 49 — Finca Esther, Panama',
+    category: 'green-coffee',
+    price: 72.0,
+    unit: '1kg',
+    origin: 'Boquete, Chiriquí — Panama',
+    notes: ['Jasmine', 'Peach', 'Tea-like'],
+    description: 'Panamanian Geisha from Finca Esther at 1,550 MASL. Washed process, 1kg of unroasted green beans. From the same farm as our Natural Lot 4 — this is the cleaner, more transparent expression. Via Summit Specialty Coffee.',
+    rating: 5,
+    badge: 'New',
+  },
+  {
+    id: 'gc-geisha-washed-anaerobic-lot-22',
+    name: 'Geisha Washed Anaerobic Lot 22 — Finca La Fortuna, Panama',
+    category: 'green-coffee',
+    price: 79.99,
+    unit: '1kg',
+    origin: 'Boquete, Chiriquí — Panama',
+    notes: ['Jasmine', 'Bergamot', 'Tropical fruit'],
+    description: 'Panamanian Geisha from Finca La Fortuna at 1,600 MASL. Washed anaerobic process — amplified florals with tropical sweetness and Boquete cup clarity. 1kg of unroasted green beans via Summit Specialty Coffee.',
+    rating: 5,
+    badge: 'New',
+  },
 
   // Commercial Equipment — enquire / coming soon
   {
