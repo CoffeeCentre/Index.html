@@ -41,7 +41,7 @@
     #  - The Shopify cart-permalink checkout is a top-level navigation, not a
     #    fetch/form-action, so brewing.coffeecentre.london is intentionally
     #    NOT in connect-src or form-action.
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.shopify.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.shopify.com https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
 
 # Long-cache the hashed JS/CSS Vite emits to dist/assets/*. Hashed filenames
 # mean redeploys invalidate automatically, so a year of cache is safe.
