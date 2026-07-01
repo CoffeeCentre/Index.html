@@ -1,9 +1,14 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
+
+[functions]
+  # TypeScript functions are auto-compiled by Netlify.
+  node_bundler = "esbuild"
 
 # SPA fallback — the app uses state-based routing, so every URL should serve
 # index.html and let React render the right page.
@@ -41,7 +46,7 @@
     #  - The Shopify cart-permalink checkout is a top-level navigation, not a
     #    fetch/form-action, so brewing.coffeecentre.london is intentionally
     #    NOT in connect-src or form-action.
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.shopify.com https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://cdn.shopify.com https://images.unsplash.com https://*.cdninstagram.com https://*.fbcdn.net; font-src 'self' https://fonts.gstatic.com data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
 
 # Long-cache the hashed JS/CSS Vite emits to dist/assets/*. Hashed filenames
 # mean redeploys invalidate automatically, so a year of cache is safe.

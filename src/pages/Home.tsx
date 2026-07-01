@@ -2,6 +2,7 @@ import { ArrowRight, Truck, ShieldCheck, RefreshCw, Award, Tag, Mail } from 'luc
 import { Button } from '@/components/ui/button'
 import { ProductCard } from '@/components/ProductCard'
 import { HeroCarousel } from '@/components/HeroCarousel'
+import { InstagramFeed } from '@/components/InstagramFeed'
 import { CATEGORIES, PRODUCTS } from '@/data/products'
 import type { Category } from '@/data/products'
 import { useNewsletter } from '@/App'
@@ -113,6 +114,9 @@ export function Home({ navigate, navigateToProduct }: HomeProps) {
           })}
         </div>
       </section>
+
+      {/* INSTAGRAM — live feed via Netlify Function + Graph API */}
+      <InstagramFeed limit={6} />
 
       {/* NEWSLETTER — topic-segmented, opens full modal */}
       <section className="bg-background py-16">
