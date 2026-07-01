@@ -44,16 +44,13 @@ export function About({ navigate }: AboutProps) {
         <div className="md:col-span-5">
           <div className="relative aspect-[4/5] max-w-sm mx-auto">
             <div className="absolute inset-0 bg-copper/20 -rotate-3"></div>
-            <div className="absolute inset-2 bg-coffee-bean">
-              <svg viewBox="0 0 200 250" className="w-full h-full">
-                <circle cx="100" cy="90" r="42" fill="hsl(28 40% 70%)"/>
-                <path d="M 60 80 Q 60 50 100 47 Q 140 50 140 80 Q 140 64 100 58 Q 60 64 60 80" fill="hsl(25 30% 18%)"/>
-                <ellipse cx="86" cy="92" rx="3" ry="3.5" fill="hsl(25 30% 18%)"/>
-                <ellipse cx="114" cy="92" rx="3" ry="3.5" fill="hsl(25 30% 18%)"/>
-                <path d="M 88 110 Q 100 116 112 110" stroke="hsl(25 30% 18%)" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                <path d="M 55 145 Q 55 250 100 250 Q 145 250 145 145 L 132 138 Q 100 152 68 138 Z" fill="hsl(38 33% 96%)"/>
-                <line x1="100" y1="145" x2="100" y2="250" stroke="hsl(28 60% 45%)" strokeWidth="1.5"/>
-              </svg>
+            <div className="absolute inset-2 bg-coffee-bean overflow-hidden">
+              <img
+                src="/img/founder-bartosz.jpg"
+                alt="Bartosz Ciepaj, founder of Coffee Centre London"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
