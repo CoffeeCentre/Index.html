@@ -6,7 +6,7 @@ import type { Category } from '@/data/products'
 import { Minus, Plus, X, ShoppingBag, ArrowRight, Info } from 'lucide-react'
 
 interface CartSheetProps {
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
 }
 
 export function CartSheet({ navigate }: CartSheetProps) {

@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import type { Category } from '@/data/products'
 
 interface AboutProps {
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
 }
 
 export function About({ navigate }: AboutProps) {

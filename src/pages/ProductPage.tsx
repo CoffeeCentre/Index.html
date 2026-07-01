@@ -10,7 +10,7 @@ import { useContactPrefill } from '@/App'
 
 interface ProductPageProps {
   productId: string
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
   navigateToProduct: (id: string) => void
 }
 

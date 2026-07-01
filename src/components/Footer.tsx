@@ -4,7 +4,7 @@ import type { Category } from '@/data/products'
 import { useNewsletter } from '@/App'
 
 interface FooterProps {
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
 }
 
 export function Footer({ navigate }: FooterProps) {
@@ -41,6 +41,7 @@ export function Footer({ navigate }: FooterProps) {
             </h4>
             <ul className="space-y-2.5 text-sm opacity-80">
               <li><button onClick={() => navigate('about')} className="hover:text-copper transition-colors">About</button></li>
+              <li><button onClick={() => navigate('members')} className="hover:text-copper transition-colors">Members</button></li>
               <li><button onClick={() => navigate('contact')} className="hover:text-copper transition-colors">Contact</button></li>
               <li><button onClick={() => navigate('contact')} className="hover:text-copper transition-colors">Wholesale Enquiries</button></li>
               <li><button onClick={() => navigate('commercial-equipment')} className="hover:text-copper transition-colors">Trade</button></li>

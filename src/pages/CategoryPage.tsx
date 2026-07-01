@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 
 interface CategoryPageProps {
   category: Category
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
   navigateToProduct: (id: string) => void
 }
 

@@ -7,7 +7,7 @@ import type { Category } from '@/data/products'
 import { useNewsletter } from '@/App'
 
 interface HomeProps {
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
   navigateToProduct: (id: string) => void
 }
 

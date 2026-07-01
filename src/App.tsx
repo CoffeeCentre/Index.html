@@ -9,10 +9,11 @@ import { CategoryPage } from '@/pages/CategoryPage'
 import { ProductPage } from '@/pages/ProductPage'
 import { About } from '@/pages/About'
 import { Contact } from '@/pages/Contact'
+import { Members } from '@/pages/Members'
 import { productById } from '@/data/products'
 import type { Category } from '@/data/products'
 
-type Page = 'home' | Category | 'about' | 'contact' | 'product'
+type Page = 'home' | Category | 'about' | 'contact' | 'members' | 'product'
 
 // Context: pop the newsletter modal
 interface NewsletterContextValue {
@@ -55,7 +56,7 @@ function AppInner() {
     return p
   }
 
-  const navigate = (p: 'home' | Category | 'about' | 'contact') => {
+  const navigate = (p: 'home' | Category | 'about' | 'contact' | 'members') => {
     setPage(p)
     setProductId(null)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -102,6 +103,7 @@ function AppInner() {
       consulting: 'Consulting — Coffee Centre London',
       about: 'About — Coffee Centre London',
       contact: 'Contact — Coffee Centre London',
+      members: 'Members — Coffee Centre London',
     }
     if (page === 'product' && productId) {
       const p = productById(productId)
@@ -146,6 +148,7 @@ function AppInner() {
               />
             )}
             {page === 'about' && <About navigate={navigate} />}
+            {page === 'members' && <Members navigate={navigate} />}
             {page === 'contact' && <Contact />}
           </main>
           <Footer navigate={navigate} />

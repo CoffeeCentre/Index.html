@@ -7,8 +7,8 @@ import { Logo } from './Logo'
 import type { Category } from '@/data/products'
 
 interface HeaderProps {
-  currentPage: 'home' | Category | 'about' | 'contact'
-  navigate: (page: 'home' | Category | 'about' | 'contact') => void
+  currentPage: 'home' | Category | 'about' | 'contact' | 'members'
+  navigate: (page: 'home' | Category | 'about' | 'contact' | 'members') => void
 }
 
 const NAV_ITEMS: { label: string; page: HeaderProps['currentPage'] }[] = [
@@ -20,6 +20,7 @@ const NAV_ITEMS: { label: string; page: HeaderProps['currentPage'] }[] = [
   { label: 'Green Coffee', page: 'green-coffee' },
   { label: 'Commercial', page: 'commercial-equipment' },
   { label: 'About', page: 'about' },
+  { label: 'Members', page: 'members' },
   { label: 'Contact', page: 'contact' },
 ]
 
