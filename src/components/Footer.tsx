@@ -29,9 +29,7 @@ export function Footer({ navigate }: FooterProps) {
               <li><button onClick={() => navigate('home-equipment')} className="hover:text-copper transition-colors">Home Equipment</button></li>
               <li><button onClick={() => navigate('training')} className="hover:text-copper transition-colors">Training & Courses</button></li>
               <li><button onClick={() => navigate('consulting')} className="hover:text-copper transition-colors">Consulting</button></li>
-              <li><button onClick={() => navigate('coffee')} className="hover:text-copper transition-colors">Roasted Coffee</button></li>
               <li><button onClick={() => navigate('green-coffee')} className="hover:text-copper transition-colors">Green Coffee</button></li>
-              <li><button onClick={() => navigate('commercial-equipment')} className="hover:text-copper transition-colors">Commercial</button></li>
             </ul>
           </div>
 
@@ -44,7 +42,7 @@ export function Footer({ navigate }: FooterProps) {
               <li><button onClick={() => navigate('members')} className="hover:text-copper transition-colors">Members</button></li>
               <li><button onClick={() => navigate('contact')} className="hover:text-copper transition-colors">Contact</button></li>
               <li><button onClick={() => navigate('contact')} className="hover:text-copper transition-colors">Wholesale Enquiries</button></li>
-              <li><button onClick={() => navigate('commercial-equipment')} className="hover:text-copper transition-colors">Trade</button></li>
+              <li><button onClick={() => navigate('contact')} className="hover:text-copper transition-colors">Trade</button></li>
               <li><button onClick={openNewsletter} className="hover:text-copper transition-colors">Newsletter</button></li>
             </ul>
           </div>

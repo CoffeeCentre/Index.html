@@ -47,13 +47,13 @@ export const CATEGORIES: { id: Category; label: string; tagline: string; image: 
     id: 'training',
     label: 'Training & Courses',
     tagline: 'SCA & CQI certified courses with UK\'s top tutors',
-    image: '',
+    image: '/img/categories/training.jpg',
   },
   {
     id: 'consulting',
     label: 'Consulting',
     tagline: 'End-to-end coffee project consulting — concept to opening day',
-    image: '',
+    image: '/img/categories/consulting.jpg',
   },
   {
     id: 'coffee',
@@ -65,7 +65,7 @@ export const CATEGORIES: { id: Category; label: string; tagline: string; image: 
     id: 'green-coffee',
     label: 'Green Coffee',
     tagline: 'Unroasted specialty beans for home & micro-roasters',
-    image: '',
+    image: '/img/categories/green-coffee.jpg',
   },
   {
     id: 'commercial-equipment',

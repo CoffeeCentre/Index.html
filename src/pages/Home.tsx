@@ -90,7 +90,9 @@ export function Home({ navigate, navigateToProduct }: HomeProps) {
           <h2 className="text-2xl md:text-4xl font-semibold">Find what you need</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {CATEGORIES.map((cat, i) => {
+          {CATEGORIES.filter(
+            (cat) => cat.id !== 'coffee' && cat.id !== 'commercial-equipment',
+          ).map((cat, i) => {
             const isDark = i % 2 === 0
             return (
               <button
@@ -100,9 +102,22 @@ export function Home({ navigate, navigateToProduct }: HomeProps) {
                   isDark ? 'bg-forest-deep' : 'bg-coffee-bean'
                 } text-primary-foreground`}
               >
-                <span className="absolute -bottom-6 -right-3 text-[100px] lg:text-[120px] font-bold opacity-[0.08] leading-none font-serif">
-                  0{i + 1}
-                </span>
+                {cat.image ? (
+                  <>
+                    <img
+                      src={cat.image}
+                      alt=""
+                      aria-hidden
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/25" />
+                  </>
+                ) : (
+                  <span className="absolute -bottom-6 -right-3 text-[100px] lg:text-[120px] font-bold opacity-[0.08] leading-none font-serif">
+                    0{i + 1}
+                  </span>
+                )}
                 <div className="relative h-full p-4 lg:p-5 flex flex-col justify-end">
                   <h3 className="text-base lg:text-xl font-semibold mb-1.5 leading-tight">{cat.label}</h3>
                   <div className="inline-flex items-center gap-1.5 text-[10px] lg:text-[11px] font-sans-alt uppercase tracking-[0.18em] text-copper group-hover:gap-2.5 transition-all">

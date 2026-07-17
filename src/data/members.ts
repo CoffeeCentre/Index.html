@@ -77,6 +77,7 @@ export const MEMBERS: Member[] = [
     name: 'Julian Loayza',
     role: 'Freelance Trainer · Coffee Consultant · SCA AST & Q Grader Instructor',
     category: 'Consultant',
+    image: '/img/members/julian.jpg',
     bio:
       'After finishing university in Madrid, Spain (where he studied nothing related to coffee), he moved to Dubai, where he got his first job as a barista. After living 3 years in the UAE, where he ended up managing a cafe, he moved to London. His first job was as an Assistant Roaster for Monmouth. After learning the hard bits of the profession (lifting sacks, cleaning flues, etc.) he worked for different roasteries in London: Qima, Terrone, 39Steps Coffee, Beantale, Code.194 and others.\n\n' +
       'Now he is a freelance trainer, coffee consultant and AST for Introduction to Coffee, Roasting, Barista Skills, Green Coffee, Brewing, CVA for Cuppers and Sensory Skills. He is a former CQI Q Arabica Instructor and transitioned to become a SCA Q Grader Instructor.\n\n' +
