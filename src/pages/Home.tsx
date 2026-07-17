@@ -90,7 +90,9 @@ export function Home({ navigate, navigateToProduct }: HomeProps) {
           <h2 className="text-2xl md:text-4xl font-semibold">Find what you need</h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {CATEGORIES.map((cat, i) => {
+          {CATEGORIES.filter(
+            (cat) => cat.id !== 'coffee' && cat.id !== 'commercial-equipment',
+          ).map((cat, i) => {
             const isDark = i % 2 === 0
             return (
               <button

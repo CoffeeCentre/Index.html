@@ -123,11 +123,11 @@ export function About({ navigate }: AboutProps) {
             Get in Touch
           </Button>
           <Button
-            onClick={() => navigate('coffee')}
+            onClick={() => navigate('home-equipment')}
             variant="outline"
             className="rounded-none font-sans-alt uppercase tracking-[0.18em] text-xs px-8 py-6"
           >
-            Shop Coffee
+            Shop Equipment
           </Button>
         </div>
       </section>

@@ -196,9 +196,8 @@ export function Contact() {
           <div className="bg-coffee-bean text-primary-foreground p-6">
             <div className="font-sans-alt text-[11px] uppercase tracking-[0.22em] text-copper mb-2">Opening Hours</div>
             <div className="text-sm space-y-1.5 opacity-90">
-              <div className="flex justify-between"><span>Mon – Fri</span><span>8:00 – 17:00</span></div>
-              <div className="flex justify-between"><span>Saturday</span><span>9:00 – 14:00</span></div>
-              <div className="flex justify-between"><span>Sunday</span><span>Closed</span></div>
+              <div className="flex justify-between"><span>Mon – Fri</span><span>10:00 – 17:00</span></div>
+              <div className="flex justify-between"><span>Sat – Sun</span><span>Closed</span></div>
             </div>
           </div>
         </div>
