@@ -40,6 +40,7 @@ export const MEMBERS: Member[] = [
     role: 'Coffee Roaster · CQI Q Arabica Grader · Industrial Engineer',
     company: 'OVNI Coffee',
     category: 'Roaster',
+    image: '/img/members/nico.jpg',
     bio:
       'Nico is a coffee roaster, Industrial Engineer, CQI Q Arabica Grader, and the founder of OVNI Coffee — a small but globally driven coffee project built around rare origins, high-level coffees, and cups with real personality.\n\n' +
       'His roasting journey has taken him through Argentina, Spain, Australia, and the UK, shaping a perspective that mixes technical precision with a wider cultural view of coffee. Through OVNI, he has been building a different kind of coffee company: one that cares as much about the story, identity, and emotional impact of a coffee as it does about quality in the cup.\n\n' +
