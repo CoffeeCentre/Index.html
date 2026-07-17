@@ -202,7 +202,6 @@ function FilterChip({
 function MemberStory({ member, index }: { member: Member; index: number }) {
   const imageRight = index % 2 === 1
   const bodyParagraphs = paragraphs(member.bio)
-  const label = String(index + 1).padStart(2, '0')
 
   return (
     <article className="grid md:grid-cols-2 gap-8 md:gap-14 items-center">
@@ -213,12 +212,9 @@ function MemberStory({ member, index }: { member: Member; index: number }) {
 
       {/* STORY */}
       <div className={imageRight ? 'md:order-1' : 'md:order-2'}>
-        <div className="flex items-center gap-4 mb-5">
-          <span className="font-serif text-4xl md:text-5xl text-copper/30 leading-none">
-            {label}
-          </span>
+        <div className="mb-5">
           <span className="font-sans-alt text-[11px] uppercase tracking-[0.22em] text-copper">
-            {member.category}
+            Member
             {member.location && <> · {member.location}</>}
           </span>
         </div>
