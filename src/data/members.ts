@@ -47,6 +47,18 @@ export const MEMBERS: Member[] = [
       'His work brings together rigor, curiosity, and a willingness to challenge the usual codes of the industry. At Coffee Centre London, he adds an international and distinctive approach rooted in both deep coffee knowledge and long-term creative vision.',
     link: 'https://www.ovni.coffee',
   },
+  {
+    id: 'romain-rb',
+    name: 'Romain',
+    role: 'Specialty Coffee Professional · Roaster · Educator',
+    company: 'RB Coffee for Music',
+    category: 'Roaster',
+    bio:
+      'Romain is a specialty coffee professional with over 10 years of experience across coffee roasting, barista operations, coffee education, and recipe development. Trained by Bartosz Ciepaj, former Head of Coffee at Harrods and UK Coffee Roasting Champion, Romain built his expertise within one of the UK\'s most demanding luxury hospitality environments. At the Harrods Roastery, he played a key role in coffee quality, barista training, and recipe development, supporting a coffee programme that supplied more than 30 cafés and restaurants, trained over 100 baristas, and produced approximately 33 tonnes of coffee annually.\n\n' +
+      'Throughout his career, Romain has contributed to bespoke coffee experiences and signature recipes for globally recognised names including Dior, Prada, Jimmy Choo, The Macallan, Baccarat Bar, Studio Frantzén, and World Pastry Champion Angelo Musa. His work is driven by a passion for excellence, consistency, and innovation, combining technical expertise with a deep understanding of hospitality and specialty coffee.\n\n' +
+      'Alongside his career in coffee, Romain is the founder of RB Coffee for Music, a platform dedicated to bringing together specialty coffee and live music through unique experiences that celebrate craftsmanship, creativity, and community. As a member of Forest Hill Coffee Centre, Romain brings this same depth of expertise and passion for the craft to the local coffee community.',
+    link: 'https://rbcoffeeformusic.com',
+  },
 ]
 
 // Category order for optional filter chips (empty categories are hidden).
