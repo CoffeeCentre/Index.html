@@ -34,20 +34,15 @@ export interface Member {
 }
 
 export const MEMBERS: Member[] = [
-  // Add your first member entry here. Pattern:
-  //
-  // {
-  //   id: 'jane-doe',
-  //   name: 'Jane Doe',
-  //   role: 'Head Roaster',
-  //   company: 'Small Fry Coffee Co.',
-  //   category: 'Roaster',
-  //   location: 'Peckham, London',
-  //   bio: 'Roasts single origins on our production drum on Thursdays. Focuses on East African washed lots and long-cool profiles.',
-  //   image: '/img/members/jane-doe.jpg',
-  //   link: 'https://instagram.com/smallfrycoffee',
-  //   quote: 'The EK43 upstairs changed how I dial in filter.',
-  // },
+  {
+    id: 'nico-ovni',
+    name: 'Nico',
+    role: 'Coffee Roaster · CQI Q Arabica Grader · Industrial Engineer',
+    company: 'OVNI Coffee',
+    category: 'Roaster',
+    bio: 'Nico is a coffee roaster, Industrial Engineer, CQI Q Arabica Grader, and the founder of OVNI Coffee — a small but globally driven coffee project built around rare origins, high-level coffees, and cups with real personality. His roasting journey has taken him through Argentina, Spain, Australia, and the UK, shaping a perspective that mixes technical precision with a wider cultural view of coffee. Through OVNI, he has been building a different kind of coffee company: one that cares as much about the story, identity, and emotional impact of a coffee as it does about quality in the cup. His work brings together rigor, curiosity, and a willingness to challenge the usual codes of the industry. At Coffee Centre London, he adds an international and distinctive approach rooted in both deep coffee knowledge and long-term creative vision.',
+    link: 'https://www.ovni.coffee',
+  },
 ]
 
 // Category order for optional filter chips (empty categories are hidden).
