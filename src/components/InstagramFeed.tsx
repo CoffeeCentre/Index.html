@@ -38,7 +38,7 @@ interface FeedResponse {
   error?: string
 }
 
-const INSTAGRAM_HANDLE = 'coffeecentrelondon'
+const INSTAGRAM_HANDLE = 'coffeecentre.london'
 const INSTAGRAM_URL = `https://instagram.com/${INSTAGRAM_HANDLE}`
 
 export function InstagramFeed({ limit = 6 }: { limit?: number }) {
