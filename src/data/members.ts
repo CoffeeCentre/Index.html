@@ -60,6 +60,17 @@ export const MEMBERS: Member[] = [
       'Alongside his career in coffee, Romain is the founder of RB Coffee for Music, a platform dedicated to bringing together specialty coffee and live music through unique experiences that celebrate craftsmanship, creativity, and community. As a member of Forest Hill Coffee Centre, Romain brings this same depth of expertise and passion for the craft to the local coffee community.',
     link: 'https://rbcoffeeformusic.com',
   },
+  {
+    id: 'matthew-album',
+    name: 'Matthew Robley-Siemonsma',
+    role: 'Roaster · Consultant · 2× SCA UK Roasting Champion',
+    company: 'Album',
+    category: 'Roaster',
+    bio:
+      "Matthew has been working in specialty coffee in London since 2009, having first got into it as a home enthusiast a couple of years earlier. Before that his background was in fine art and music, and some of that has found its way back into his coffee work over the years. He's held key roles at some of London's legendary coffee businesses doing a bit of everything: sourcing, roasting, developing menus, training teams, and building new shops from scratch. That experience is the basis of his consulting work today, helping coffee businesses with operations, projects, growth and quality. In 2016 and 2017 he won the SCA UK Roasting Championships two years in a row, and placed 3rd at the World Roasting Championships in Shanghai.\n\n" +
+      "In 2021 he started Album, a somewhat 'underground' roastery focusing on careful curation of coffees and careful roasting, aiming for sweetness and complexity while keeping things clean and clear in the cup. Each coffee is paired with cover artwork from a specific collaboration with an artist or designer, printed across the packaging formats, a bit like a record sleeve, so Album works a bit like a gallery or publisher as well as a roastery. A new coffee and a new artwork come out every month, slowly building into a kind of archive, which is part of where the name comes from. Album has remained a 'nomadic' roastery since the beginning, and Matthew is a resident member of Coffee Centre London, roasting from its facility in Forest Hill.",
+    link: 'https://albumcoffee.com',
+  },
 ]
 
 // Category order for optional filter chips (empty categories are hidden).
