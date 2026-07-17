@@ -40,6 +40,17 @@ export function CategoryPage({ category, navigate, navigateToProduct }: Category
     <div>
       {/* Category Hero */}
       <section className="bg-forest-deep text-primary-foreground py-16 md:py-24 relative overflow-hidden">
+        {meta.image && (
+          <>
+            <img
+              src={meta.image}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/95 via-forest-deep/80 to-forest-deep/45" />
+          </>
+        )}
         <div className="absolute inset-0 opacity-20">
           <svg className="w-full h-full" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
             {Array.from({ length: 14 }).map((_, i) => (
