@@ -12,8 +12,7 @@ import { Contact } from '@/pages/Contact'
 import { Members } from '@/pages/Members'
 import { productById } from '@/data/products'
 import type { Category } from '@/data/products'
-
-type Page = 'home' | Category | 'about' | 'contact' | 'members' | 'product'
+import { pathFor, parsePath, type Page } from '@/lib/routing'
 
 // Context: pop the newsletter modal
 interface NewsletterContextValue {
@@ -44,8 +43,12 @@ export const useContactPrefill = () => {
 }
 
 function AppInner() {
-  const [page, setPage] = useState<Page>('home')
-  const [productId, setProductId] = useState<string | null>(null)
+  // Initialise page state from the current URL so deep links (e.g. /training,
+  // /product/foo) and refreshes land on the right page.
+  const initialRoute =
+    typeof window !== 'undefined' ? parsePath(window.location.pathname) : { page: 'home' as Page, productId: null }
+  const [page, setPage] = useState<Page>(initialRoute.page)
+  const [productId, setProductId] = useState<string | null>(initialRoute.productId)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [newsletterShown, setNewsletterShown] = useState(false)
   const [contactPrefill, setContactPrefill] = useState<ContactPrefill | null>(null)
@@ -59,14 +62,30 @@ function AppInner() {
   const navigate = (p: 'home' | Category | 'about' | 'contact' | 'members') => {
     setPage(p)
     setProductId(null)
+    const path = pathFor(p)
+    if (window.location.pathname !== path) window.history.pushState({}, '', path)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const navigateToProduct = (id: string) => {
     setProductId(id)
     setPage('product')
+    const path = pathFor('product', id)
+    if (window.location.pathname !== path) window.history.pushState({}, '', path)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  // Sync state when the user uses the browser back/forward buttons.
+  useEffect(() => {
+    const onPopState = () => {
+      const route = parsePath(window.location.pathname)
+      setPage(route.page)
+      setProductId(route.productId)
+      window.scrollTo({ top: 0 })
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
 
   // Open the newsletter modal almost immediately on page load (only once per session).
   // 500ms delay so the page paints first — instant-feeling but not jarring.
